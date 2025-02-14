@@ -22,7 +22,6 @@ const AuthProvider = ({ children }) => {
     server
       .get("/api/user/status")
       .then((response) => {
-        console.log(response.data);
         setUser(response.data);
       })
       .catch(() => {
