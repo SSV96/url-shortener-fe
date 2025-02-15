@@ -6,12 +6,18 @@ const AuthProvider = ({ children }) => {
   const [shortUrls, setShortUrls] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
-
+  const [stats, setStats] = useState({
+    totalClicks: 0,
+    uniqueUsers: 0,
+    clicksByDate: [],
+    osType: [],
+    deviceType: [],
+  });
   const [error, setError] = useState(null);
 
   const showToast = (message, type = "error") => {
     setToastMessage({ message, type });
-    console.log("", toastMessage);
+
     // Hide toast after 3 seconds
     setTimeout(() => {
       setToastMessage(null);
@@ -41,6 +47,8 @@ const AuthProvider = ({ children }) => {
         showToast,
         error,
         setError,
+        setStats,
+        stats,
       }}
     >
       {isLoading && (
